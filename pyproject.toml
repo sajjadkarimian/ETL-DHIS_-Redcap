@@ -1,0 +1,25 @@
+[project]
+name = "biotopia-etl"
+version = "0.1.0"
+description = "Pulls BIOTOPIA data from REDCap and DHIS2 into Postgres for the Superset dashboards"
+requires-python = ">=3.10"
+dependencies = [
+  "requests>=2.31",
+  "psycopg[binary]>=3.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+biotopia-etl = "biotopia_etl.__main__:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["biotopia_etl"]
+
+[tool.setuptools.package-data]
+biotopia_etl = ["*.csv", "*.json", "sql/*.sql"]
